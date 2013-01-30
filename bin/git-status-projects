@@ -18,7 +18,7 @@ do
     if [ $? != 0 ]; then
         echo "xxx Working directory not clean: $git_project_directory"
     fi
-    ahead_message=$(git status | grep 'Your branch is ahead of')
+    ahead_message=$(git status | grep 'Your branch is ahead of' | sed -e 's/# Your/Your/; s/\.$//')
     if [ "$ahead_message" != "" ]; then
         echo "xxx $ahead_message: $git_project_directory"
     fi
