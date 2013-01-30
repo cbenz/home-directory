@@ -14,7 +14,7 @@ do
     set +e
     grep '\[remote "origin"\]' $git_project_directory/.git/config > /dev/null
     if [ $? != 0 ]; then
-        echo "=== Skipping $git_project_directory"
+        echo "xxx Skipping $git_project_directory (no remote \"origin\" found)"
         echo
         continue
     fi
