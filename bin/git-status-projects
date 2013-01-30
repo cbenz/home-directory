@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# Author: Christophe Benz <cbenz@easter-eggs.com>
+#
+# Print status of all git repositories in current directory sub-directories,
+# excepted the clean ones.
+
+
+set -e
+
+
+find -type d -name .git | xargs -n1 dirname | \
+while read git_project_directory
+do
+    cd $git_project_directory
+    set +e
+    git status | grep 'nothing to commit' > /dev/null
+    if [ $? != 0 ]; then
+        echo "xxx Working directory not clean: $git_project_directory"
+    fi
+    ahead_message=$(git status | grep 'Your branch is ahead of')
+    if [ "$ahead_message" != "" ]; then
+        echo "xxx $ahead_message: $git_project_directory"
+    fi
+    set -e
+    cd - > /dev/null
+done
