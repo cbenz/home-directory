@@ -1,0 +1,22 @@
+#!/bin/bash
+
+git sed "&agrave;" "à"
+git sed "&Agrave;" "À"
+git sed "&amp;" "&"
+git sed "&auml;" "Ä"
+git sed "&ccedil;" "ç"
+git sed "&eacute;" "é"
+git sed "&Eacute;" "É"
+git sed "&ecirc;" "ê"
+git sed "&Ecirc;" "Ê"
+git sed "&egrave;" "è"
+git sed "&Egrave;" "È"
+git sed "&euro;" "€"
+git sed "&gt;" ">"
+git sed "&lt;" "<"
+git sed "&nbsp;" " "
+git sed "&quot;" "\""
+git sed "&uuml;" "ü"
+
+echo "Remaining HTML entities:"
+git ls-files | xargs grep --color -P "&\w+?;"
