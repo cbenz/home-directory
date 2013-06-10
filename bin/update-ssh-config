@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+SSH_CONFIG="$HOME/.ssh/config"
+
+echo -n > $SSH_CONFIG
+for file in $HOME/.ssh/config.d/*; do
+    echo -e "# ===== $(basename $file) =====\n" >> $SSH_CONFIG
+    cat $file >> $SSH_CONFIG
+    echo -e "\n" >> $SSH_CONFIG
+done

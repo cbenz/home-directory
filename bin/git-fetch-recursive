@@ -2,7 +2,7 @@
 #
 # Author: Christophe Benz <cbenz@easter-eggs.com>
 #
-# Pull all git repositories in current directory sub-directories.
+# Fetch all git repositories in current directory sub-directories.
 
 
 set -e
@@ -19,9 +19,9 @@ do
         continue
     fi
     set -e
-    echo "=== Pulling from $git_project_directory"
+    echo "=== Fetching all remotes of $git_project_directory"
     cd $git_project_directory
-    git pull --rebase
+    git fetch --all
     cd - > /dev/null
     echo
 done
