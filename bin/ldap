@@ -1,0 +1,20 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+import argparse
+import sys
+import webbrowser
+
+
+def main():
+    ldap_url_pattern = u'https://ssl.easter-eggs.fr/ldap/eesearch.php?LSsearch_submit=1&pattern={query}'
+    parser = argparse.ArgumentParser(description=u'Open LDAP Saisie contact')
+    parser.add_argument('query', help=u'The search query')
+    args = parser.parse_args()
+    webbrowser.open(url=ldap_url_pattern.format(query=args.query))
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
