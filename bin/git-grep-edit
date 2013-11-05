@@ -13,4 +13,4 @@ if [ -z "$PATTERN" ]; then
     exit 1
 fi
 
-git grep -l "$PATTERN" | xargs -I "{}" xdg-open "{}"
+git grep -l "$PATTERN" | xargs -I "{}" gedit "{}"
