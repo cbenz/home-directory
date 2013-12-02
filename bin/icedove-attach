@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+icedove -compose attachment=$(readlink -f "$1")
