@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $UID != 0 ]; then
+    echo "This script must be run as root user."
+    exit 1
+fi
+
+service network-manager stop
+
+sleep 1
+
+rmmod iwlmvm
+rmmod iwlwifi
+modprobe iwlwifi
+rfkill unblock all
+
+sleep 1
+
+service network-manager start
+service network-manager restart
+
+echo /var/lib/NetworkManager/NetworkManager.state
+cat /var/lib/NetworkManager/NetworkManager.state
+
+#sleep 5
+#ping -c 5 www.google.com
