@@ -7,6 +7,8 @@
 
 set -e
 
+LC_ALL=C
+
 
 ((find -type d -name .git | (xargs -n1 dirname 2> /dev/null)) || exit) | \
 while read git_project_directory
