@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# $1 can be empty or for example "-0.1" or "+0.1"
+
+value=$(xrandr --current --verbose | grep Brightness | cut -d ' ' -f 2)
+
+if [ -z "$1" ]; then
+	case $BLOCK_BUTTON in
+		4) $0 +0.05 ; exit ;;
+		5) $0 -0.05 ; exit ;;
+		esac
+	python -c "print '{}%'.format(int($value * 100))"
+else
+	min=0.05
+	max=1.0
+	new_value=$(echo "$value $1" | awk '{print $1 + $2}')
+	if (( $(echo "$new_value > $max" |bc -l) )); then
+		new_value=$max
+	elif (( $(echo "$new_value < $min" |bc -l) )); then
+		new_value=$min
+	fi
+	xrandr --output eDP-1 --brightness $new_value
+	python -c "print '{}%'.format(int($new_value * 100))"
+fi

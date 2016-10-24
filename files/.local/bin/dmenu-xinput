@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+DMENU="dmenu -i -l 30 -p xinput"
+
+device_id=`xinput | $DMENU | sed -e "s/^.*id=\(.\+\)\[.*$/\1/"`
+action=`echo -e "0: enable\n1: disable" | $DMENU | cut -d ':' -f 1`
+
+# execute the choice in background
+case "$action" in
+    0) xinput enable $device_id; status=$? ;;
+    1) xinput disable $device_id; status=$? ;;
+esac
+
+echo $status
+
+if [ $status != 0 ]; then
+    i3-nagbar -m "Error with xinput (status $status)"
+fi

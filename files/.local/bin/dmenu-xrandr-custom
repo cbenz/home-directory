@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+DMENU="dmenu -i -l 30 -p xrandr"
+
+choice=`echo -e "0: Full resolution\n1: Medium resolution (1920)\n2: Low resolution (1024)" | $DMENU | cut -d ':' -f 1`
+
+# execute the choice in background
+case "$choice" in
+    0) xrandr --output eDP-1 --auto --dpi 196; i3-msg restart ;;
+    1) xrandr --output eDP-1 --mode 1920x1080 --dpi 120 ; i3-msg restart ;;
+    2) xrandr --output eDP-1 --mode 1360x768 --dpi 120 ; i3-msg restart ;;
+esac

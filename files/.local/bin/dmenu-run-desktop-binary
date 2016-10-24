@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+DMENU="dmenu -i -l 30 -p run"
+
+# exec j4-dmenu-desktop --dmenu="bash -c \"(cat; dmenu_path) | sort --unique | $DMENU\"" --display-binary
+exec j4-dmenu-desktop --dmenu="bash -c \"(cat; dmenu_path) | $DMENU\"" --display-binary
