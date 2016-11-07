@@ -1,8 +1,8 @@
-# set -gx PATH ./node_modules/.bin $PATH
-set -gx PATH ~/.local/bin ~/.cargo/bin $PATH
+# set -xg PATH ./node_modules/.bin $PATH
+set -xg PATH ~/.local/bin ~/.cargo/bin $PATH
 
-# source /usr/share/fish/tools/web_config/sample_prompts/informative_git.fish
-source /home/cbenz/Dev/vendor/gist/9679788/conda.fish
+# This sample prompt is customized for virtualenv, see ~/.config/fish/functions/fish_prompt.fish
+# source /usr/share/fish/tools/web_config/sample_prompts/informative_vcs.fish
 
 # Custom key bindings
 # (disabled because Super-d does not work with those bindings)
@@ -59,6 +59,7 @@ end
 # Now I use "pew" https://github.com/berdario/pew!
 # added by Pew
 source (pew shell_config)
+set -xg VIRTUALENVWRAPPER_WORKON_CD 0
 
 # Keychain
 

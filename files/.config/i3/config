@@ -30,6 +30,7 @@ font pango:monospace 9
 floating_modifier $mod
 
 workspace_layout tabbed
+hide_edge_borders both
 
 # start a terminal
 bindsym $mod+t exec i3-sensible-terminal
@@ -138,12 +139,14 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Shift+l exec i3lock
+
 # Windows
 
-# xev
 for_window [Title="Event Tester"] floating enable
 for_window [Title="Volume Control"] floating enable
 for_window [Class="vlc"] floating enable
+for_window [Class="Pidgin"] floating enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -158,14 +161,14 @@ bar {
 }
 
 # Executed with the default shell of cbenz which is fish.
-# exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/layout.json'"
-exec icedove
-exec chromium
-exec x-terminal-emulator
-exec nm-applet
-exec redshift-gtk
+exec --no-startup-id ssh-add
+exec --no-startup-id nm-applet
 exec --no-startup-id gnome-settings-daemon
-exec ssh-add
+# exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.config/i3/layout.json'"
+# exec icedove
+# exec i3-sensible-browser
+# exec x-terminal-emulator
+# exec redshift-gtk
 # exec_always keychain --eval --quiet -Q id_rsa | source
 
 
@@ -194,3 +197,5 @@ exec ssh-add
 # }
 
 # bindsym $mod+r mode "resize"
+
+# bindsym $mod+l exec i3-save-tree | i3-layout-to-dot | xdot -
