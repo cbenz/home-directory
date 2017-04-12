@@ -61,9 +61,11 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -R
 # Switch to xrandr since xbacklight produces an error and does not produce any effect since some weeks.
 bindsym XF86MonBrightnessDown exec ~/.config/i3blocks/brightness-via-xrandr -0.1 && pkill -RTMIN+20 i3blocks
 bindsym XF86MonBrightnessUp exec ~/.config/i3blocks/brightness-via-xrandr +0.1 && pkill -RTMIN+20 i3blocks
+bindsym --release Shift+XF86MonBrightnessDown exec sleep 1 && xset dpms force off
 
 # screenshot
 bindsym Print exec gnome-screenshot --interactive
+bindsym --release Shift+Print exec gnome-screenshot --area --clipboard
 
 # change focus
 bindsym $mod+Left focus left

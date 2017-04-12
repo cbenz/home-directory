@@ -1,5 +1,14 @@
+# Virtualenvs
+
+# eval (python -m virtualfish)
+# Now I use "pew" https://github.com/berdario/pew!
+# added by Pew
+source (pew shell_config)
+set -xg VIRTUALENVWRAPPER_WORKON_CD 0
+
 # set -xg PATH ./node_modules/.bin $PATH
-set -xg PATH ~/.local/bin ~/.cargo/bin $PATH
+set -xg PATH $PATH ~/.local/bin
+# set -xg PATH ~/.cargo/bin $PATH
 
 # This sample prompt is customized for virtualenv, see ~/.config/fish/functions/fish_prompt.fish
 # source /usr/share/fish/tools/web_config/sample_prompts/informative_vcs.fish
@@ -28,9 +37,9 @@ abbr -a l ls
 abbr -a ll ls -lh
 abbr -a t ls -ltr
 abbr -a S ls -lSr
-abbr -a acs apt-cache search
-abbr -a acsh apt-cache show
-abbr -a acp apt-cache policy
+abbr -a acs apt search
+abbr -a acsh apt show
+abbr -a acp apt policy
 abbr -a dL dpkg -L
 abbr -a dS dpkg -S
 abbr -a pi pip install
@@ -52,14 +61,6 @@ end
 function cbhs -d "Copy most recent command in history to a clipboard"
   history | head -n 1 | cb
 end
-
-# Virtualenvs
-
-# eval (python -m virtualfish)
-# Now I use "pew" https://github.com/berdario/pew!
-# added by Pew
-source (pew shell_config)
-set -xg VIRTUALENVWRAPPER_WORKON_CD 0
 
 # Keychain
 
