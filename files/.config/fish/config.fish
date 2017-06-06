@@ -69,5 +69,5 @@ end
 # end
 
 # OPAM configuration
-source /home/cbenz/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
+# source /home/cbenz/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
 
